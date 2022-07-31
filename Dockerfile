@@ -7,7 +7,7 @@ WORKDIR $APP_HOME
 COPY . ./
 
 RUN pip install --no-cache-dir -r requirements.txt
+RUN python -m pip list
 
-ENTRYPOINTpython -m pip list
 ENTRYPOINT python main.py
 

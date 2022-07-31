@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pocdevelopers",
+  "private_key_id": "bef98de72f2eb337af396c318b1c9301d081696f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCTU6cZziDWNeVn\nxyjozdyXxBmTGgf4vU6d7UFWvu7YM2346VWPTfu7wrbp1AXK2wMtnCUynojZPXl5\nDB6YNO+rrI/BbuBShK1IHAEvPDHsdHlQ4oMVOCbxWqPlZH2F7km4T5azPHmL0Rf+\n2Kno4VqO0PiENRtDug7jYRWApWszewqTB/cSUIYEkr9Hj0woey4NubknJnu/zLYf\ncx4bsHyXfRKBsSQkE23gkRwm2jkR9bzQDkdAk38x41GNxZN34q0jL7ZOk9tNEqtn\nt4Rzp532Z+ZA3twgxIISOXkQUenSYVoiv21ueaqS1ofc9UQ5yHMDMy+DB90OQI9h\n7EFrlN0XAgMBAAECggEAE1xgbtM4XH47tg4lsaZwEV+7bqnylz0lijqGJiS0VaQ4\nlQfw7wK0DMIzcHolAroSalmFR+gumsHp5z7w/Fakkn58a9Kq1x1Jelr3yuHRu724\nvajuygiVkY00Ua6JkmK0vGx1JPvTC01ApoSJm6mV0YPjzNf/y8A1Oatl/ICAnISh\nWFkWpyw1POu+5Gky+H2QrZgnku16Y8zhBmu9faVFd3HC4Wlhi4wUMec7sWw1Lh8I\nyzpyHz4RElqPkTnX41f32PcovI2LtZjIn7Q6qmBnCMg3mHj41YvBI6d1yg8zCJy9\n0CdIooMx8mPZnaFsMDd+sD1r/RZBh0H3/TZ0Qr0G1QKBgQDHuzaGDOO2wAqJeqg6\nE/iDQeZ5rPEgKis4bZE+XBZaKKV9BGYM3INDVQeHcjIsuN7bQRfLNWi0mhdRQ0Ka\nO//GuXDRHtfhi+wzOchpOFLad3mLqonHREgj6iVyt+aO5yjQKx16vKbBUX5kWFoE\nDwGudEW1Geq+Pj8NNAwiqW8ZCwKBgQC81Ps/pDdPBMYpOO7CAyKyjKqJHeImcbN6\ntqj4NwLsiVlwgeDA9mW+FPRoLJTyhdFnOHVK52NvunOPG4UvRFyssMlSjO0d6OgZ\n+ATDrQY4UkrrNHLL7qymOcarTKnsAijn/Prnczb+bmW8xtiEh1jdgTyCFEYEefgb\nuq5NmRrLpQKBgE4RTu52e0sjJPs3himtRKWJTJyijF0WHm6f5PWK6PG0kXqcDYdZ\nabUXtymp6RKx7+mjN7ml1pdA43xP3eiLKx5xvTb/50Gxf1FGdJ8r9LaPnGKK9e99\nMPVYv+pnFyckEz/Kmmsu8b7+K3jtT8HmW7HkoJp41tglXF+8yEGEGHihAoGAJnuR\nKIsi6muipsv/fHJ/I7wfFQqOCB+r4BpRnSQ46FOlcpRFZY3Rdkd297P+Nt6mqk6L\nONSnIyHwYv3MyrE34cm1falSuYG5q3EsJ2Sfm+LJed2ad40Qil/D6S0ahAp8o6qe\nx4RndLqy6SHtBjU/GwU3e5r+GfNxaNVGqHHHUDECgYEAx33BN01pO2AYtaXJcZbU\nzuDoi3b5hm1qhlFDQ4MPuowvbZluLODSY5Pb95p788e15ssOgCnonQzsjp5PYMsb\nvF/0wIvxcRM+6UexFUF5SOFSRlNPl1bvbYwxxcJndUvWPPtNv1IgTkg7wtAOQWrZ\nCPGXuaMcCjBsE6bebqLmR28=\n-----END PRIVATE KEY-----\n",
+  "client_email": "myinviteaccountservicepoc@pocdevelopers.iam.gserviceaccount.com",
+  "client_id": "107632562713304501829",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/myinviteaccountservicepoc%40pocdevelopers.iam.gserviceaccount.com"
+}

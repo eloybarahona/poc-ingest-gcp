@@ -1,0 +1,10 @@
+{
+    "hired_employees":
+    {
+        "id": ["int","Id of the employee"],
+        "name": ["str","Name and surname of the employee"],
+        "datetime": ["str","Hire datetime in ISO format"],
+        "department_id": ["int","Id of the department which the employee was hired for"],
+        "job_id": ["int","Id of the job which the employee was hired for"]
+    }
+}
