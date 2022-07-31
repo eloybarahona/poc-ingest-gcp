@@ -1,6 +1,6 @@
-# API Rest para migrar CSV a SQL 
+# API Rest migrar CSV a SQL 
 
-Esta es una API Rest para ingestar datos en formato CSV desde Storage a Cloud SQL MySQL.
+Es una API Rest para ingestar datos en formato CSV desde Storage a Cloud SQL MySQL.
 
 ## Detalle de API Rest
 
@@ -13,6 +13,16 @@ Esta es una API Rest para ingestar datos en formato CSV desde Storage a Cloud SQ
 
 Para realizar pruebas se ha despleado en Cloud RUN
 [API Rest PoC](https://poc-ingest-dev-z22wuxtb7a-uc.a.run.app/)
+
+### Testing tables
+* departments
+* jobs
+* hired_employees
+* all
+
+Ejemplos: 
+* Para ingestar todas las tablas ../ingestar_datos/all
+* Para ingestar una tabla  ../ingestar_datos/jobs
 
 ## Data Studio para explorar datos
 
