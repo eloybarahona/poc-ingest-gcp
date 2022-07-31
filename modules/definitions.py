@@ -3,6 +3,7 @@ import pandas as pd
 import pandera as pa
 import pandavro as pdx
 import pymysql
+import pathlib
 import io
 
 
@@ -134,9 +135,13 @@ def backup_avro(conection):
         table_name = table
         query = ("SELECT * FROM {}").format(table_name)
         df_table = pd.read_sql(query, con = conection)
-        pdx.to_avro('./files_avro/{}.avro'.format(table_name), df_table)
+        pdx.to_avro(mypath('/files_avro/')+'{}.avro'.format(table_name), df_table)
 
 def rest_avro_table(engine, table_name):
     engine.execute('TRUNCATE TABLE {}'.format(table_name))
-    data = pdx.read_avro('./files_avro/{}.avro'.format(table_name))
+    data = pdx.read_avro(mypath('/files_avro/')+'{}.avro'.format(table_name))
     data.to_sql(table_name, engine, if_exists='append',index=False)
+
+def mypath(ruta):
+    mypath = str(pathlib.Path().absolute()) + ruta
+    return mypath

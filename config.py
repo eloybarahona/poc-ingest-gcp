@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 
 import json
 
-with open('.\security\parameters.json', 'r') as json_file:
+with open(mypath('/security/')+'parameters.json', 'r') as json_file:
     parameters = json.load(json_file)
 
 def mycon():
@@ -19,10 +19,8 @@ def myengine():
     return connection
 
 def myclient():
-    with open('.\security\parameters.json', 'r') as json_file:
-        parameters = json.load(json_file)
     bucket_name = parameters['bucket_name']
-    credentials = service_account.Credentials.from_service_account_file(".\security\parameters-key.json")
+    credentials = service_account.Credentials.from_service_account_file(mypath('/security/')+'parameters-key.json')
     storage_client = storage.Client(credentials=credentials)
     #bucket = storage_client.bucket(bucket_name)
     return storage_client, bucket_name

@@ -10,26 +10,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return "Testing API Rest"
-
-@app.route('/consultar_datos/<string:table>', methods=('GET', 'POST'))
-def consultar_datos(table):
-    try:
-        conection = mycon()
-        cursor = conection.cursor()
-        sql = ("SELECT id, name FROM {}").format(table)
-        cursor.execute(sql)
-        datos = cursor.fetchall()
-        cursos = []
-        for fila in datos:
-            curso = {'id': fila[0], 'name': fila[1]}
-            cursos.append(curso)
-        conection.close()
-        return jsonify({'Datos': cursos, 'mensaje': "Datos listados.", 'exito': True})
-    except Exception as error:
-        print('Error :' + str(error))
-        conection.close()
-        return jsonify({'Mensaje': "Error", 'Resultado': False, 'Descripcion' : str(error)})
-    
+  
 @app.route('/ingestar_datos/<string:table>', methods=('GET', 'POST'))
 def ingest_datos(table):
     try:
@@ -72,6 +53,27 @@ def restaurar_tablas(table):
         print('Error :' + str(error))
         return jsonify({'Mensaje': "Error", 'Resultado': False, 'Descripcion' : 'Tabla no existe'})
 
+@app.route('/consultar_datos/<string:table>', methods=('GET', 'POST'))
+def consultar_datos(table):
+    try:
+        conection = mycon()
+        cursor = conection.cursor()
+        columns_table = globals()['columns_' + table]
+        col, val = str_columns(columns_table)
+        col = col.replace('(','').replace(')','')
+        sql = ("SELECT {0} FROM {1}").format(col, table)
+        cursor.execute(sql)
+        datos = cursor.fetchall()
+        filas = []
+        for fila in datos:
+            filas.append(fila)
+        json_string = json.dumps(filas)
+        conection.close()
+        return jsonify({'Datos': json_string, 'mensaje': "Datos listados.", 'exito': True})
+    except Exception as error:
+        print('Error :' + str(error))
+        conection.close()
+        return jsonify({'Mensaje': "Error", 'Resultado': False, 'Descripcion' : str(error)})
+
 if __name__ == '__main__':
     app.run(port=int(os.environ.get("PORT", 8080)),host='0.0.0.0',debug=True)
-
