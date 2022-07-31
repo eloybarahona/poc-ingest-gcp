@@ -31,7 +31,7 @@ def consultar_datos(table):
         conection.close()
         return jsonify({'Mensaje': "Error", 'Resultado': False, 'Descripcion' : str(error)})
     
-@app.route('/ingest_datos/<string:table>', methods=('GET', 'POST'))
+@app.route('/ingestar_datos/<string:table>', methods=('GET', 'POST'))
 def ingest_datos(table):
     try:
         conection = mycon()
@@ -52,6 +52,26 @@ def ingest_datos(table):
     except Exception as error:
         print('Error :' + str(error))
         return jsonify({'Mensaje': "Error", 'Resultado': False, 'Descripcion' : str(error)})
+
+@app.route('/backup_tablas', methods=('GET', 'POST'))
+def backup_tables():
+    try:
+        conection = mycon()
+        backup_avro(conection)
+        return jsonify({'Mensaje': "Ok", 'Resultado': True, 'Descripcion' : 'Se realizo el backup de las tablas en AVRO'})
+    except Exception as error:
+        print('Error :' + str(error))
+        return jsonify({'Mensaje': "Error", 'Resultado': False, 'Descripcion' : str(error)})
+
+@app.route('/restaurar_tablas/<string:table>', methods=('GET', 'POST'))
+def restaurar_tablas(table):
+    try:
+        engine = myengine()
+        rest_avro_table(engine, table)
+        return jsonify({'Mensaje': "Ok", 'Resultado': True, 'Descripcion' : 'Se restauro la tabla ' + table})
+    except Exception as error:
+        print('Error :' + str(error))
+        return jsonify({'Mensaje': "Error", 'Resultado': False, 'Descripcion' : 'Tabla no existe'})
 
 if __name__ == '__main__':
     app.run(port=int(os.environ.get("PORT", 8080)),host='0.0.0.0',debug=True)

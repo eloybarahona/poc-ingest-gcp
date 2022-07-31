@@ -1,9 +1,10 @@
 from datetime import datetime
 import pandas as pd
 import pandera as pa
+import pandavro as pdx
 import pymysql
 import io
-import time
+
 
 def save_logs_error(bucket, data_error, table):
     name = 'LOGS_' + table + datetime.now().strftime("%Y%m%d-%I%M%S%p")
@@ -34,6 +35,16 @@ def check_table(conection, table_name):
         return True
     cursor.close()
     return False
+
+def return_tables(conection):
+    cursor = conection.cursor()
+    cursor.execute("SELECT table_name FROM information_schema.tables a WHERE TABLE_SCHEMA  = 'mydbpoc'")
+    tablas = cursor.fetchall()
+    cursor.close()
+    ls = []
+    for td in list(tablas): 
+        ls.append(list(td)[0])
+    return ls  
 
 def str_columns(columns_query):
     lc = len(columns_query)
@@ -115,3 +126,17 @@ def ingest_data(conection, bucket, filename, table_name, columns_table, schema_t
 
     if len(data_error) > 0:
         save_logs_error(bucket, data_error, table_name)
+
+def backup_avro(conection):
+    tables = return_tables(conection)
+    for table in tables:
+        df_table = pd.DataFrame()
+        table_name = table
+        query = ("SELECT * FROM {}").format(table_name)
+        df_table = pd.read_sql(query, con = conection)
+        pdx.to_avro('./files_avro/{}.avro'.format(table_name), df_table)
+
+def rest_avro_table(engine, table_name):
+    engine.execute('TRUNCATE TABLE {}'.format(table_name))
+    data = pdx.read_avro('./files_avro/{}.avro'.format(table_name))
+    data.to_sql(table_name, engine, if_exists='append',index=False)
