@@ -1,16 +1,31 @@
-# PoC Data Migration CSV to Cloud SQL with API Rest
+# API Rest para migrar CSV a SQL 
 
-Se ha creado una API Rest que ingesta datos en formato CSV desde un repositorio y los migra a Cloud SQL MySQL, de acuerdo a reglas y restricciones. Además, implementa caracteristicas para el backup de tablas de la base de datos.
+Esta es una API Rest para ingestar datos en formato CSV desde Storage a Cloud SQL MySQL.
 
-## Consideraciones
+## Detalle de API Rest
 
-Es una prueba de concepto. 
+* `/ingestar_datos/<string:table>` migra todos las tablas desde Storage hacia Cloud SQL MySQL.
+* `/backup_tablas` realiza un backup de todas las tablas en formato AVRO en fichero.
+* `/restaurar_tablas/<string:table>` restaura una tabla especifica desde el backup de tablas AVRO.
+* `/consultar_datos/<string:table>` consultar datos de tabla de Cloud SQL MySQL.
 
-## Instrucciones para desplegar desde Local
+## Pruebas
 
-1. N
+Para realizar pruebas se ha despleado en Cloud RUN
+[API Rest PoC](https://poc-ingest-dev-z22wuxtb7a-uc.a.run.app/)
 
-## Instrucciones para desplegar imagen desde VS Code
+## Data Studio para explorar datos
+
+[Report Data Studio End-Points](https://datastudio.google.com/reporting/fafe96ab-ae15-4f6b-be6b-722d90c58bb2/page/Fr5yC)
+
+## Implementaciones
+
+### Instrucciones para desplegar desde Local
+
+1. Asegurarse que estes intalados todas las librerias de python detallados en el archivo requirements.txt.
+2. Ejecutar main.py
+
+### Instrucciones para desplegar imagen desde VS Code
 
 1. Instalar la extensión `Cloud Code` desde la libreria.
 2. Iniciar sesión cuenta GCP desde VS Code.
@@ -18,35 +33,7 @@ Es una prueba de concepto.
 4. Desde la barra de estado Cloud Code elegir `Deploy to Cloud Run`.
 5. Desplegar.
 
-### Requerimientos
+## Requerimientos
 
 * Docker
 * Python > 3.9
-
-pip install google
-pip install google-cloud
-pip install google-cloud-storage
-pip install google-cloud-vision
-pip install --upgrade google-api-python-client
-pip install flask
-
-* Opción 1
-* Opción 2
-* Opción 3
-* Opción 4
-
-## TITULO 2
-
-Este es un parrafo
-
-Este es un parrafo
-
-* [Es un link](https://google.com.pe)
-
-`comentario sombreado`
-
-```
-BLOQUE COMENTARIO
-LINEA 1
-LINEA 2
-```
