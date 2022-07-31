@@ -1,6 +1,5 @@
 from flask import Flask
-from flask import render_template, request, jsonify
-from config import mycon
+from flask import jsonify
 from modules.definitions import *
 from modules.dictionary import *
 from config import *
